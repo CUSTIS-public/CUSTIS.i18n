@@ -21,13 +21,13 @@ namespace CUSTIS.I18N
             {
                 Contract.Ensures(Contract.Result<IResourceFallbackProcess>() != null);
 
-                return GetDefaultFallback();
+                return _mcsFallback ?? GetDefaultFallback();
             }
             set
             {
                 Contract.Requires(value != null);
 
-                throw new NotImplementedException();
+                _mcsFallback = value;
             }
         }
 
@@ -40,12 +40,15 @@ namespace CUSTIS.I18N
 
         #endregion
 
-
         #region Внутренности
 
-        private static readonly Lazy<GlobalizationSettings> Settings = new Lazy<GlobalizationSettings>(() => new GlobalizationSettings());
+        private IResourceFallbackProcess _mcsFallback;
 
-        private static readonly IResourceFallbackProcess DeafultNetResourceFallbackSeq = new ChainsResourceFallbackProcess(new[] { new[] { "*", "" } });
+        private static readonly Lazy<GlobalizationSettings> Settings =
+            new Lazy<GlobalizationSettings>(() => new GlobalizationSettings());
+
+        private static readonly IResourceFallbackProcess DeafultNetResourceFallbackSeq =
+            new ChainsResourceFallbackProcess(new[] {new[] {"*", ""}});
 
         #endregion
     }
