@@ -8,6 +8,16 @@
   
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AssemblyName>CUSTIS.I18N</AssemblyName>
+    <RootNamespace>CUSTIS.I18N</RootNamespace>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\CUSTIS.I18N.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\CUSTIS.I18N.xml</DocumentationFile>
   </PropertyGroup>
   
   <ItemGroup>
