@@ -648,19 +648,19 @@ namespace CUSTIS.I18N
                 : null;
         }
 
-/// <summary> Строковое представление, реализация <see cref="IFormattable"/>. </summary>
-/// <param name="format">Строка пользовательского формата. Не используется. </param>
-/// <param name="formatProvider">Провайдер форматирования. Используется для получения культуры строки, resourceFallbackProcess. 
-/// Информация м.б. получена из <see cref="LocalizationFormatInfo"/> или <see cref="CultureInfo"/>. </param>
-/// <returns></returns>
-string IFormattable.ToString(string format, IFormatProvider formatProvider)
-{
-    Contract.Ensures(Contract.Result<string>() != null);
+        /// <summary> Строковое представление, реализация <see cref="IFormattable"/>. </summary>
+        /// <param name="format">Строка пользовательского формата. Не используется. </param>
+        /// <param name="formatProvider">Провайдер форматирования. Используется для получения культуры строки, resourceFallbackProcess. 
+        /// Информация м.б. получена из <see cref="LocalizationFormatInfo"/> или <see cref="CultureInfo"/>. </param>
+        /// <returns></returns>
+        string IFormattable.ToString(string format, IFormatProvider formatProvider)
+        {
+            Contract.Ensures(Contract.Result<string>() != null);
 
-    var formatInfo = LocalizationFormatInfo.GetInstance(formatProvider);
+            var formatInfo = LocalizationFormatInfo.GetInstance(formatProvider);
 
-    return ToString(formatInfo.Culture ?? CultureInfo.CurrentUICulture, formatInfo.UseFallback);
-}
+            return ToString(formatInfo.Culture ?? CultureInfo.CurrentUICulture, formatInfo.UseFallback);
+        }
 
         #endregion
 
